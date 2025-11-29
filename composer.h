@@ -1,6 +1,6 @@
 #ifndef COMPOSER_H_INCLUDED
 #define COMPOSER_H_INCLUDED
-#include <iostream>;
+#include <iostream>
 #include "music.h"
 using namespace std;
 
