@@ -1,9 +1,10 @@
 #ifndef COMPOSER_H_INCLUDED
 #define COMPOSER_H_INCLUDED
 #include <iostream>
-#include "music.h"
 using namespace std;
 
+
+//ADT composer
 typedef struct elemenComposer *adrCom;
 struct composer{
     string nama;
@@ -21,5 +22,20 @@ struct listCom {
     adrCom first;
     adrCom last;
 };
+
+
+//ADT music
+typedef struct elemenMusic *adrMusic;
+struct music{
+    string judul;
+    string penyanyi;
+    string genre;
+    int tahunTerbit;
+};
+struct elemenMusic {
+    music infoMusic;
+    adrMusic next;
+};
+
 
 #endif // COMPOSER_H_INCLUDED
