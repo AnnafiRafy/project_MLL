@@ -1,0 +1,101 @@
+#include "header.h"
+#include <iostream>
+
+using namespace std;
+
+void deleteFirstMusic(adrCom c, adrMusic &m){
+    if (c->firstMusic == nullptr){
+        m = nullptr;
+    }else{
+        m = c->firstMusic;
+        c->firstMusic = p->next;
+        p->next = nullptr;
+    }
+}
+
+void deleteLastMusic(adrCom c, adrMusic &m){
+    if (c->firstMusic == nullptr){
+        cout << "tidak ada data yang dihapus";
+    }
+    else if (c->firstMusic->next == nullptr){
+        m = c->firstMusic;
+        c->firstMusic = nullptr;
+    }
+    else{
+        adrMusic q = c->firstMusic;
+        while (q->next->next != nullptr){
+            q = q->next;
+        }
+        m = q->next;
+        q->next = nullptr;
+    }
+}
+
+void deleteAfterMusic(adrCom c, adrMusic prec, adrMusic &m){
+     if (c->firstMusic == nullptr){
+        cout << "tidak ada data yang dihapus";
+    }else{
+        m = prec->next;
+        prec->next = m->next;
+        m->next = nullptr; 
+    }
+}
+
+adrMusic findElemenMusic(adrCom c, string judul){
+    adrMusic p = c->firstMusic;
+    while (p != nullptr){
+        if (p->infoMusic.judul == judul){
+            return p;
+        }
+        p = p->next;
+    }
+    return nullptr;
+}
+
+void viewMusicByGenre(adrCom c, string genre){
+    if (c->firstMusic == nullptr){
+        cout << "Musik tidak ada." << endl;
+    }
+
+    adrMusic p = c->firstMusic;
+    bool found = false;
+    while (p != nullptr){
+        if (p->infoMusic.genre == genre){
+            cout << "Musik ditemukan." << endl;
+            cout << "Judul : " << p->infoMusic.judul << endl;
+            cout << "Penyanyi: " << p->infoMusic.penyanyi << endl;
+            cout   << "Tahun: " << p->infoMusic.tahunTerbit << endl;
+            found = true;
+        }
+        p = p->next;
+    }
+
+    if (!found){
+        cout << "Tidak ada music dengan genre " << genre << "." << endl;
+    }
+}
+
+void deleteChildByJudul(adrCom c, string judul){
+    adrMusic m = findElemenChild(c, judul);
+    if (m != nullptr){
+        if (m == c->firstMusic){
+            deleteFirstChild(c, m);
+            delete m;
+        } else {
+            adrMusic q = c->firstMusic;
+            while (q->next != m){
+                q = q->next;
+            }
+
+            if (m->next == nullptr){ 
+                deleteLastChild(c, m);
+                delete m;
+            } else { 
+                deleteAfterChild(q, m);
+                delete m;
+            }
+        }
+
+        m = nullptr;
+    }
+}
