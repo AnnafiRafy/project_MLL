@@ -5,7 +5,7 @@ using namespace std;
 
 void deleteFirstMusic(adrCom c, adrMusic &m){
     if (c->firstMusic == nullptr){
-        m = nullptr;
+        cout << "tidak ada data yang dihapus";
     }else{
         m = c->firstMusic;
         c->firstMusic = m->next;
@@ -64,7 +64,7 @@ void viewMusicByGenre(adrCom c, string genre){
             cout << "Musik ditemukan." << endl;
             cout << "Judul : " << p->infoMusic.judul << endl;
             cout << "Penyanyi: " << p->infoMusic.penyanyi << endl;
-            cout   << "Tahun: " << p->infoMusic.tahunTerbit << endl;
+            cout << "Tahun: " << p->infoMusic.tahunTerbit << endl;
             found = true;
         }
         p = p->next;
@@ -86,16 +86,14 @@ void deleteChildByJudul(adrCom c, string judul){
             while (q->next != m){
                 q = q->next;
             }
-
             if (m->next == nullptr){ 
                 deleteLastMusic(c, m);
                 delete m;
             } else { 
-                deleteAfterMusic(q, m);
+                deleteAfterMusic(c, q, m);
                 delete m;
             }
         }
-
         m = nullptr;
     }
 }
