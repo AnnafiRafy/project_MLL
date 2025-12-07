@@ -3,6 +3,21 @@
 #include <iostream>
 using namespace std;
 
+//ADT music
+
+typedef struct elemenMusic *adrMusic;
+struct music{
+    string judul;
+    string penyanyi;
+    string genre;
+    int tahunTerbit;
+};
+
+struct elemenMusic {
+    music infoMusic;
+    adrMusic next;
+};
+
 
 //ADT composer
 typedef struct elemenComposer *adrCom;
@@ -12,30 +27,20 @@ struct composer{
     string genreUtama;
     string negaraAsal;
 };
+
 struct elemenComposer {
     composer infoCom;
     adrCom next;
     adrCom prev;
     adrMusic firstMusic;
 };
+
 struct listCom {
     adrCom first;
     adrCom last;
 };
 
 
-//ADT music
-typedef struct elemenMusic *adrMusic;
-struct music{
-    string judul;
-    string penyanyi;
-    string genre;
-    int tahunTerbit;
-};
-struct elemenMusic {
-    music infoMusic;
-    adrMusic next;
-};
 
 
 void createList(listCom &L);

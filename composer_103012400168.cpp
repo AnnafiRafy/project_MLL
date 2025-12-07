@@ -62,7 +62,10 @@ void viewCompGenre(listCom L, string genre){
     cout << "data: ";
     while (p != nullptr){
         if (p->infoCom.genreUtama == genre){
-            cout << "nama: " << p->infoCom.nama << ", lahir: " << p->infoCom.tahunLahir << "; Asal: " <<p->infoCom.negaraAsal << endl;
+            cout << "nama: " << p->infoCom.nama << endl 
+            <<  "lahir: " << p->infoCom.tahunLahir << endl 
+            << "Asal: " <<p->infoCom.negaraAsal << endl 
+            << endl;
         }     
     }
 }

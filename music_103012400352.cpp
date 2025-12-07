@@ -8,8 +8,8 @@ void deleteFirstMusic(adrCom c, adrMusic &m){
         m = nullptr;
     }else{
         m = c->firstMusic;
-        c->firstMusic = p->next;
-        p->next = nullptr;
+        c->firstMusic = m->next;
+        m->next = nullptr;
     }
 }
 
@@ -76,10 +76,10 @@ void viewMusicByGenre(adrCom c, string genre){
 }
 
 void deleteChildByJudul(adrCom c, string judul){
-    adrMusic m = findElemenChild(c, judul);
+    adrMusic m = findElemenMusic(c, judul);
     if (m != nullptr){
         if (m == c->firstMusic){
-            deleteFirstChild(c, m);
+            deleteFirstMusic(c, m);
             delete m;
         } else {
             adrMusic q = c->firstMusic;
@@ -88,10 +88,10 @@ void deleteChildByJudul(adrCom c, string judul){
             }
 
             if (m->next == nullptr){ 
-                deleteLastChild(c, m);
+                deleteLastMusic(c, m);
                 delete m;
             } else { 
-                deleteAfterChild(q, m);
+                deleteAfterMusic(q, m);
                 delete m;
             }
         }
