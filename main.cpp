@@ -10,6 +10,7 @@ int main()
     composer infoCom;
     music infoMusic;
 
+    createListCom(L);
     cout << "INPUT COMPOSER" << endl;
     cout << "nama: ";
     cin >> infoCom.nama;
@@ -61,6 +62,6 @@ int main()
     cin >> infoCom.genreUtama;
     cout << endl << endl;
 
-    //viewList(L);
+    viewList(L);
     return 0;
 }

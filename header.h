@@ -2,8 +2,41 @@
 #define HEADER_H_INCLUDED
 #include <iostream>
 using namespace std;
-#include "music.h"
-#include "composer.h"
+
+//ADT composer
+typedef struct elemenComposer *adrCom;
+typedef struct elemenMusic *adrMusic;
+struct composer{
+    string nama;
+    int tahunLahir;
+    string genreUtama;
+    string negaraAsal;
+};
+
+struct elemenComposer {
+    composer infoCom;
+    adrCom next;
+    adrCom prev;
+    adrMusic firstMusic;
+};
+
+struct listCom {
+    adrCom first;
+    adrCom last;
+};
+
+//ADT music
+struct music{
+    string judul;
+    string penyanyi;
+    string genre;
+    int tahunTerbit;
+};
+
+struct elemenMusic {
+    music infoMusic;
+    adrMusic next;
+};
 
 void createListCom(listCom &L);
 adrCom createComposer(string nama, int tahun, string genre, string negara);
@@ -32,4 +65,5 @@ void deleteMusicByJudul(adrCom c, string judul);
 int countMusic(adrCom p);
 adrCom mostMadeMusic(listCom L);
 void viewList(listCom L);
+
 #endif

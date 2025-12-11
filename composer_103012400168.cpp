@@ -4,14 +4,14 @@
 using namespace std;
 
 void deleteFirstCom(listCom &L, adrCom &p){
-    adrCom p = L.first;
+    p = L.first;
     L.first = p->next;
     p->next = nullptr;
     L.first->prev = nullptr;
 }
 
 void deleteLastCom(listCom &L, adrCom &p){
-    adrCom p = L.last;
+    p = L.last;
     L.last = p->prev;
     L.last->next = nullptr;
     p->prev = nullptr;
@@ -31,7 +31,7 @@ adrCom findComp(listCom L, string namaComp){
     while (p != nullptr && p->infoCom.nama != namaComp){
         p = p->next;
     }
-    
+
     if (p->infoCom.nama == namaComp){
         return nullptr;
     }else {
@@ -62,11 +62,11 @@ void viewCompGenre(listCom L, string genre){
     cout << "data: ";
     while (p != nullptr){
         if (p->infoCom.genreUtama == genre){
-            cout << "nama: " << p->infoCom.nama << endl 
-            <<  "lahir: " << p->infoCom.tahunLahir << endl 
-            << "Asal: " <<p->infoCom.negaraAsal << endl 
+            cout << "nama: " << p->infoCom.nama << endl
+            <<  "lahir: " << p->infoCom.tahunLahir << endl
+            << "Asal: " <<p->infoCom.negaraAsal << endl
             << endl;
-        }     
+        }
     }
 }
 
@@ -83,6 +83,8 @@ adrCom mostMadeMusic(listCom L){
         }
         temp = temp->next;
     }
+
+    return mostMadeMusic;
 }
 
 void viewList(listCom L){
@@ -103,5 +105,4 @@ void viewList(listCom L){
         temp = temp->next;
         cout << "-----------------------------------------" << endl;
     }
-    
 }
